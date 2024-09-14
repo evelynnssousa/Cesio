@@ -83,3 +83,23 @@ body{
     font-style: italic;
     margin-top: 20px;
   }
+  .texto p{
+    text-indent: 2em;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    font-size: 18px;
+    line-height: 1.6;
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+  .texto img{
+    width: 500px;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  }
+  .texto img:hover{
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
+  }

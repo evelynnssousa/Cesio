@@ -45,24 +45,191 @@ h1 {
  .apresentacao h1{
      padding: 0 20px;
   }
-  .apresentacao p{
-     text-indent: 1em;
-     padding: 14px;
-    }
-    .apresentacao img{
-        #ladoalado {
-            float: left;
-            margin: auto;
-        }
-    }
-    .apresentacao img {
-        width: 400px!important;
-        height: 400px!important;
-        margin: 10px;
-        margin-top: 50px;
-        position: relative;
-        text-align: center; 
-    }
-h2{
-    text-align: right;
+  .abacate h2{
+    text-align: center;
+    font-size: 40px;
+    margin: 20px;
+    font-weight: 700px;
+  }
+  .abacate img{
+    width: 500px;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  }
+  .abacate img:hover{
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
+}
+.abacate1 {
+    text-indent: 2em;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    font-size: 18px;
+    line-height: 1.6;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+.abacate2 {
+    text-indent: 2em;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    font-size: 18px;
+    line-height: 1.6;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+.banana h2{
+    text-align: center;
+    font-size: 40px;
+    margin: 20px;
+    font-weight: 700px;
+}
+.banana img{
+    width: 500px;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+.banana img:hover{
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
+}
+.banana1 {
+    text-indent: 2em;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    font-size: 18px;
+    line-height: 1.6;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+.banana2 {
+    text-indent: 2em;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-direction: row-reverse;
+    font-size: 18px;
+    line-height: 1.6;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 30px;
+}
+.caqui h2{
+    text-align: center;
+    font-size: 40px;
+    margin: 20px;
+    font-weight: 700px;
+}
+.caqui img{
+    width: 500px;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+.caqui img:hover{
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
+}
+.caqui1 {
+    text-indent: 2em;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    font-size: 18px;
+    line-height: 1.6;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+.caqui2 {
+    text-indent: 2em;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-direction: row-reverse;
+    font-size: 18px;
+    line-height: 1.6;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 30px;
+}
+.damasco h2{
+    text-align: center;
+    font-size: 40px;
+    margin: 20px;
+    font-weight: 700px;
+}
+.damasco img{
+    width: 500px;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+.damasco img:hover{
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
+}
+.damasco1 {
+    text-indent: 2em;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    font-size: 18px;
+    line-height: 1.6;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+.damasco2 {
+    text-indent: 2em;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-direction: row-reverse;
+    font-size: 18px;
+    line-height: 1.6;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 30px;
+}
+.esfregadinha h2{
+    text-align: center;
+    font-size: 40px;
+    margin: 20px;
+    font-weight: 700px;
+}
+.esfregadinha img{
+    width: 500px;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+.esfregadinha img:hover{
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
+}
+.esfregadinha1 {
+    text-indent: 2em;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    font-size: 18px;
+    line-height: 1.6;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+.esfregadinha2 {
+    text-indent: 2em;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-direction: row-reverse;
+    font-size: 18px;
+    line-height: 1.6;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 30px;
 }

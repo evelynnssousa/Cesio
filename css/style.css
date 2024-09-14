@@ -59,31 +59,13 @@ body{
 .apresentacao h1{
     padding: 0 20px;
  }
- .apresentacao p{
-    text-indent: 1em;
-    padding: 14px;
- }
-.apresentacao img{
-    #ladoalado {
-        float: left;
-        margin: auto;
-    }
-}
-.apresentacao img {
-    width: 400px!important;
-    height: 400px!important;
-    margin: 10px;
-    margin-top: 50px;
-    position: relative;
-    text-align: center;
-  }
   h1 {
     font-family: "Roboto", sans-serif;
     font-weight: 1000;
     font-style: italic;
     margin-top: 20px;
   }
-  .texto p{
+  .text1 {
     text-indent: 2em;
     display: flex;
     align-items: center;
@@ -93,13 +75,25 @@ body{
     margin-left: 20px;
     margin-right: 20px;
   }
-  .texto img{
+  .apresentacao img{
     width: 500px;
     height: auto;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
   }
-  .texto img:hover{
+  .apresentacao img:hover{
     transform: scale(1.05);
     transition: transform 0.3s ease;
   }
+    .text2 {
+    text-indent: 2em;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-direction: row-reverse;
+    font-size: 18px;
+    line-height: 1.6;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 30px;
+    }

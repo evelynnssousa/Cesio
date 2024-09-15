@@ -6,7 +6,6 @@
     var $tbody = document.querySelector('[data-js="tbody"]');
 
     var letters = [
-        // Atualize a matriz de letras com as novas palavras
         ['a', 'm', 'b', 'u', 'l', 'a', 't', 'o', 'r', 'i', 'o', 's'],
         ['c', 'e', 's', 'i', 'o', 'x', 'z', 'u', 'h', 'l', 'm', 'n'],
         ['h', 'o', 's', 'p', 'i', 't', 'a', 'i', 's', 'a', 'e', 'o'],
@@ -22,7 +21,6 @@
     ];
 
     var indexes = [
-        // Atualize os índices para as novas palavras
         [[0, 0], [0, 1], [0, 2], [0, 3], [0, 4], [0, 5], [0, 6], [0, 7], [0, 8], [0, 9], [0, 10], [0, 11]], // ambulatórios
         [[1, 0], [1, 1], [1, 2], [1, 3], [1, 4]], // césio
         [[2, 0], [2, 1], [2, 2], [2, 3], [2, 4], [2, 5], [2, 6], [2, 7]], // hospitais
@@ -49,29 +47,22 @@
         });
     });
 
-    // Seleção de palavras com mouse ou toque
     var selectedCells = [];
     var isMouseDown = false;
 
     document.body.style.userSelect = 'none';
 
     function clearSelection() {
-        selectedCells.forEach(function (cell) {
-            cell.classList.remove('color');
-        });
+        if (isCorrectSelection()) {
+            selectedCells.forEach(function (cell) {
+                cell.classList.add('selected'); // Mantém selecionado
+            });
+        } else {
+            selectedCells.forEach(function (cell) {
+                cell.classList.remove('color'); // Desmarca se incorreto
+            });
+        }
         selectedCells = [];
-    }
-
-    function checkIfWordSelected() {
-        var selectedIndexes = selectedCells.map(function (cell) {
-            var line = Array.prototype.indexOf.call(cell.parentElement.parentElement.children, cell.parentElement);
-            var column = Array.prototype.indexOf.call(cell.parentElement.children, cell);
-            return [line, column];
-        });
-
-        return indexes.some(function (wordIndexes) {
-            return JSON.stringify(wordIndexes) === JSON.stringify(selectedIndexes);
-        });
     }
 
     function handleMouseDown(event) {
@@ -87,13 +78,7 @@
 
     function handleMouseUp() {
         isMouseDown = false;
-        if (checkIfWordSelected()) {
-            selectedCells.forEach(function (cell) {
-                cell.classList.add('selected'); // Mantém a palavra marcada
-            });
-        } else {
-            clearSelection(); // Limpa se estiver errada
-        }
+        clearSelection();
     }
 
     function selectCell(cell) {
@@ -101,6 +86,17 @@
             cell.classList.add('color');
             selectedCells.push(cell);
         }
+    }
+
+    function isCorrectSelection() {
+        // Verifica se as células selecionadas correspondem a uma das palavras
+        return indexes.some(function (wordIndexes) {
+            return wordIndexes.every(function (index, i) {
+                var row = $tbody.children[index[0]];
+                var cell = row.children[index[1]];
+                return selectedCells[i] === cell;
+            });
+        });
     }
 
     $tbody.addEventListener('mousedown', handleMouseDown);
@@ -116,13 +112,7 @@
     });
 
     $tbody.addEventListener('touchend', function () {
-        if (checkIfWordSelected()) {
-            selectedCells.forEach(function (cell) {
-                cell.classList.add('selected');
-            });
-        } else {
-            clearSelection();
-        }
+        clearSelection();
     });
 
 })();

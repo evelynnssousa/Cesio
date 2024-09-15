@@ -51,6 +51,15 @@ h1 {
     margin: 20px;
     font-weight: 700px;
   }
+  .apresentacao1 p{
+    text-indent: 2em;
+    align-items: center;
+    font-size: 18px;
+    line-height: 1.6;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 30px;
+}
   .abacate h2{
     text-align: center;
     font-size: 40px;
@@ -230,4 +239,13 @@ h1 {
     font-size: 40px;
     margin: 20px;
     font-weight: 700px;
+}
+.kiwi p{
+    text-indent: 2em;
+    align-items: center;
+    font-size: 18px;
+    line-height: 1.6;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 30px;
 }

@@ -29,13 +29,65 @@ iframe{
     margin-top: 20px;
 }
 h1{
-    font-size: 17px;
-    font-weight: 700;
-    font-family: 'Poppins', sans-serif;
-    padding: 14px 20px;
+    font-family: "Roboto", sans-serif;
+    font-weight: 700px;
+    font-style: italic;
+    margin-top: 20px;
+    text-align: center;
 }
 body{
     background-color: #f4f4f4;
+}
+.apresentacao{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+ }
+ .apresentacao h1{
+     padding: 0 20px;
+  }
+  .apresentacao h1{
+    text-align: center;
+    font-size: 40px;
+    margin: 20px;
+    font-weight: 700px;
+  }
+  .apresentacao1 p{
+    text-indent: 2em;
+    align-items: center;
+    font-size: 18px;
+    line-height: 1.6;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 30px;
+}
+.amora h2{
+    text-align: center;
+    font-size: 40px;
+    margin: 20px;
+    font-weight: 700px;
+  }
+  .amora iframe{
+    width: 500px;
+    height: 460px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  }
+  .amora iframe:hover{
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
+}
+.amora1 {
+    text-indent: 2em;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    font-size: 18px;
+    line-height: 1.6;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 30px;
 }
 
 

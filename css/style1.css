@@ -172,12 +172,12 @@ body{
     font-size: 40px;
     margin: 20px;
     font-weight: 700px;
-  }
-  .esfregadinha iframe{
+}
+.esfregadinha iframe{
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-  }
-  .esfregadinha iframe:hover{
+}
+.esfregadinha iframe:hover{
     transform: scale(1.05);
     transition: transform 0.3s ease;
 }

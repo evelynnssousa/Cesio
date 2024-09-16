@@ -35,3 +35,6 @@ header nav a:hover {
 body{
     background-color: #f4f4f4;
 }
+main {
+    padding-top: 100px;
+}

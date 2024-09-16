@@ -69,8 +69,6 @@ body{
     font-weight: 700px;
   }
   .amora iframe{
-    width: 500px;
-    height: 460px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
   }
@@ -83,12 +81,114 @@ body{
     display: flex;
     align-items: center;
     gap: 20px;
+    flex-direction: row-reverse;
     font-size: 18px;
     line-height: 1.6;
     margin-left: 20px;
     margin-right: 20px;
     margin-top: 30px;
 }
-
-
-
+.bergamota h2{
+    text-align: center;
+    font-size: 40px;
+    margin: 20px;
+    font-weight: 700px;
+}
+.bergamota img{
+    width: 500px;
+    height: 315px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+.bergamota img:hover{
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
+}
+.bergamota1 {
+    text-indent: 2em;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    font-size: 18px;
+    line-height: 1.6;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+.cereja h2{
+    text-align: center;
+    font-size: 40px;
+    margin: 20px;
+    font-weight: 700px;
+}
+.cereja img{
+    width: 500px;
+    height: 315px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+.cereja img:hover{
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
+}
+.cereja1 {
+    text-indent: 2em;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    font-size: 18px;
+    line-height: 1.6;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+.damasco h2{
+    text-align: center;
+    font-size: 40px;
+    margin: 20px;
+    font-weight: 700px;
+}
+.damasco img{
+    width: 500px;
+    height: 315px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+.damasco img:hover{
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
+}
+.damasco1 {
+    text-indent: 2em;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-direction: row-reverse;
+    font-size: 18px;
+    line-height: 1.6;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+.esfregadinha h2{
+    text-align: center;
+    font-size: 40px;
+    margin: 20px;
+    font-weight: 700px;
+  }
+  .esfregadinha iframe{
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  }
+  .esfregadinha iframe:hover{
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
+}
+.esfregadinha1 {
+    text-indent: 2em;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    font-size: 18px;
+    line-height: 1.6;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 30px;
+}

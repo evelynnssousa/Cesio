@@ -35,6 +35,9 @@ header nav a:hover {
 body{
     background-color: #f4f4f4;
 }
+main{
+    padding-top: 130px;
+}
 .questoes{
     border: solid rgb(0, 0, 0);
     border-radius: 10px;
@@ -42,6 +45,18 @@ body{
     flex-direction: column;
 }
 .questoes h2{
+    color: white;
+    background-color: black;
+}
+
+.resposta{
+    display: none;
+    
+    border: solid rgb(0, 0, 0);
+    border-radius: 10px;
+}
+
+.resposta .h2{
     color: white;
     background-color: black;
 }

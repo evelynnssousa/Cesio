@@ -3,48 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="keywords" content="Trabalho de física, Césio, Radiação">
-    <meta name="author" content="Evelyn Sousa da Silva">
-    <meta name="robots" content="index,all">
-    <title>Césio</title>
-    <link rel="shortcut icon" href="img/cesio.png" type="image/x-icon">
-    <link rel="stylesheet" href="css/style5.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <title>Exercícios Inteligentes</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <header>
+    <!-- <header>
         <nav>
             <a href="index.html">Página inicial</a>
-            <a href="casos3.html">Casos</a>
-            <a href="indicacoes1.html">Indicações</a>
-            <a href="cacapalavra2.html">Caça palavras</a>
-            <a href="curiosidades4.html">Curiosidades</a>
         </nav>
-    </header>
+    </header> -->
+
     <main>
-        <h1>Exercícios sobre o acidente com césio-137</h1>
-        <div class="questoes"> 
-            <h2>Questão 1</h2>
-            <p>(UNCISAL) Um dos maiores acidentes com o isótopo 137Cs aconteceu em setembro de 1987, na cidade de Goiânia, Goiás, quando um aparelho de radioterapia desativado foi desmontado em um ferro-velho. O desastre fez centenas de vítimas, todas contaminadas por radiações emitidas por uma cápsula que continha 137Cs, sendo o maior acidente radioativo do Brasil e o maior ocorrido fora das usinas nucleares. O lixo radioativo encontra-se confinado em contêineres (revestidos com concreto e aço) em um depósito que foi construído para esse fim. Se no lixo radioativo encontra-se 20 g de 137Cs e o seu tempo de meia-vida é 30 anos, depois de quantos anos teremos aproximadamente 0,15 g de 137Cs?</p>
-            <ul>
-                <li>A) 90</li>
-                <li>B) 120</li>
-                <li>C) 150</li>
-                <li>D) 180</li>
-                <li>E) 210</li>
-            </ul>
-            <button id="verResposta">Ver resposta</button>
+        <h1>Gerador de Exercícios Inteligentes</h1>
+
+        <section>
+            <label for="difficulty">Escolha a dificuldade:</label>
+            <select id="difficulty">
+                <option value="facil">Fácil</option>
+                <option value="medio">Médio</option>
+                <option value="dificil">Difícil</option>
+            </select>
+
+            <label for="tema">Escolha o tema:</label>
+            <select id="tema">
+                <option value="cesio">Césio-137</option>
+                <option value="radiacao">Radiação</option>
+                <option value="fisica_geral">Física Geral</option>
+            </select>
+
+            <button id="gerarPergunta">Gerar Pergunta</button>
+        </section>
+
+        <div class="questao-gerada">
+            <h2 id="pergunta"></h2>
+            <ul id="alternativas"></ul>
+            <button id="verResposta" style="display:none;">Ver resposta</button>
         </div>
 
-        <div class="resposta" id="resposta">
-            <h2>Resposta</h2> 
-            <p><strong>Letra B</strong></p>
-            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quam impedit quisquam labore suscipit, magni, accusantium sunt a id explicabo temporibus quo adipisci fugit vero corrupti quis quidem sequi delectus dicta.</p>
+        <div class="resposta" id="resposta" style="display:none;">
+            <h2>Explicação</h2>
+            <p id="explicacao"></p>
         </div>
     </main>
 
-    <script src="js/questoes.js"></script>
+    <!-- Inclua os arquivos JS -->
+    <script src="js/dom.js"></script>
 </body>
 </html>

@@ -48,6 +48,7 @@
     });
 
     var selectedCells = [];
+    var foundWords = [];
     var isMouseDown = false;
 
     document.body.style.userSelect = 'none';
@@ -55,11 +56,14 @@
     function clearSelection() {
         if (isCorrectSelection()) {
             selectedCells.forEach(function (cell) {
-                cell.classList.add('selected'); // Mantém selecionado
+                cell.classList.add('selected'); // Mantém a seleção correta
+                foundWords.push(cell); // Armazena as células da palavra encontrada
             });
         } else {
             selectedCells.forEach(function (cell) {
-                cell.classList.remove('color'); // Desmarca se incorreto
+                if (!foundWords.includes(cell)) { // Desmarca apenas se não fizer parte de uma palavra encontrada
+                    cell.classList.remove('color');
+                }
             });
         }
         selectedCells = [];

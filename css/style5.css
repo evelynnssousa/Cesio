@@ -1,62 +1,88 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=SUSE:wght@100..800&display=swap');
-*{
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100..900&display=swap');
+
+* {
     margin: 0;
     padding: 0;
-    border: 0;
+    box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
-    font-size: 100%;
 }
-header{
+
+header {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    background: linear-gradient(to bottom, #002f4b , rgba(43, 47, 119, 0));
-    text-align: center;
-    padding: 20px;
+    background: linear-gradient(to bottom, #002f4b, rgba(43, 47, 119, 0));
+    padding: 15px;
     z-index: 1000;
-    align-items: center;
+    text-align: center;
 }
-header img{
-    float: left;
-    margin: 5px;
-}
+
 header nav a {
-    font-size: 20px;
-    font-weight: 700;
+    font-size: 18px;
+    font-weight: 600;
     color: white;
-    padding: 14px 20px;
+    padding: 10px 15px;
     text-decoration: none;
-    display: inline-block;
+    transition: color 0.3s ease;
 }
+
 header nav a:hover {
     color: #2e373f;
 }
-body{
+
+body {
     background-color: #f4f4f4;
-}
-main{
-    padding-top: 130px;
-}
-.questoes{
-    border: solid rgb(0, 0, 0);
-    border-radius: 10px;
-    display: flex;
-    flex-direction: column;
-}
-.questoes h2{
-    color: white;
-    background-color: black;
+    padding-top: 100px;
 }
 
-.resposta{
+main {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+}
+
+.questoes {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.questoes h2 {
+    color: #333;
+    background-color: #f8f8f8;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.resposta {
     display: none;
-    
-    border: solid rgb(0, 0, 0);
+    margin-top: 20px;
+    border: 1px solid #ddd;
     border-radius: 10px;
+    background-color: white;
+    padding: 20px;
 }
 
-.resposta .h2{
+.resposta h2 {
+    color: #333;
+    background-color: #f8f8f8;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+button {
+    background-color: #002f4b;
     color: white;
-    background-color: black;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #1a4d6d;
 }

@@ -1,122 +1,166 @@
-(function () {
-    'use strict';
+const palavras = [
+    'AMBULATORIOS', 'CESIO', 'HOSPITAIS', 'NEUTRON', 'RADIOSOTOPOS', 
+    'CHUMBO', 'FERRO', 'ISOTOPOS', 'POTASSIO', 'CAPSULA', 
+    'GAMA', 'NUCLEAR', 'RADIACAO'
+];
 
-    var $form = document.querySelector('[data-js="form"]');
-    var $search = document.querySelector('[data-js="search"]');
-    var $tbody = document.querySelector('[data-js="tbody"]');
+let palavrasEncontradas = 0; // Contador de palavras encontradas
+let palavrasColocadas = []; // Lista de palavras que foram corretamente colocadas na grid
+const gridSize = 12;  // Tamanho do tabuleiro
 
-    var letters = [
-        ['a', 'm', 'b', 'u', 'l', 'a', 't', 'o', 'r', 'i', 'o', 's'],
-        ['c', 'e', 's', 'i', 'o', 'x', 'z', 'u', 'h', 'l', 'm', 'n'],
-        ['h', 'o', 's', 'p', 'i', 't', 'a', 'i', 's', 'a', 'e', 'o'],
-        ['n', 'e', 'u', 't', 'r', 'o', 'n', 'y', 'w', 'g', 'u', 'r'],
-        ['r', 'a', 'd', 'i', 'o', 's', 'o', 't', 'o', 'p', 'o', 's'],
-        ['d', 'e', 'u', 'r', 'a', 'n', 'i', 'o', 'u', 'i', 'q', 's'],
-        ['c', 'h', 'u', 'm', 'b', 'o', 'k', 'c', 'z', 'v', 'f', 'p'],
-        ['f', 'e', 'r', 'r', 'o', 'b', 'l', 'm', 's', 'd', 'o', 't'],
-        ['i', 's', 'o', 't', 'o', 'p', 'o', 's', 'l', 'c', 'x', 'o'],
-        ['p', 'o', 't', 'a', 's', 's', 'i', 'o', 'e', 'r', 'j', 'l'],
-        ['c', 'a', 'p', 's', 'u', 'l', 'a', 'b', 'h', 'r', 'g', 'v'],
-        ['g', 'a', 'm', 'a', 'x', 't', 'y', 'u', 'v', 'm', 'k', 'p']
-    ];
+function createGrid() {
+    const grid = document.getElementById('word-search');
+    grid.innerHTML = ''; // Limpa o conteúdo
 
-    var indexes = [
-        [[0, 0], [0, 1], [0, 2], [0, 3], [0, 4], [0, 5], [0, 6], [0, 7], [0, 8], [0, 9], [0, 10], [0, 11]], // ambulatórios
-        [[1, 0], [1, 1], [1, 2], [1, 3], [1, 4]], // césio
-        [[2, 0], [2, 1], [2, 2], [2, 3], [2, 4], [2, 5], [2, 6], [2, 7]], // hospitais
-        [[3, 0], [3, 1], [3, 2], [3, 3], [3, 4], [3, 5]], // nêutron
-        [[4, 0], [4, 1], [4, 2], [4, 3], [4, 4], [4, 5], [4, 6], [4, 7], [4, 8], [4, 9]], // radiosótopos de urânio
-        [[6, 0], [6, 1], [6, 2], [6, 3], [6, 4]], // chumbo
-        [[7, 0], [7, 1], [7, 2], [7, 3], [7, 4]], // ferro
-        [[8, 0], [8, 1], [8, 2], [8, 3], [8, 4], [8, 5], [8, 6]], // isótopos
-        [[9, 0], [9, 1], [9, 2], [9, 3], [9, 4], [9, 5], [9, 6]], // potássio
-        [[10, 0], [10, 1], [10, 2], [10, 3], [10, 4], [10, 5], [10, 6]], // cápsula
-        [[11, 0], [11, 1], [11, 2], [11, 3]], // gama
-        [[11, 7], [11, 8], [11, 9], [11, 10], [11, 11]], // nuclear
-        [[4, 0], [4, 1], [4, 2], [4, 3]] // radiação
-    ];
+    const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    const gridArray = Array(gridSize * gridSize).fill(''); // Cria um array vazio para a grid
 
-    var gameWords = ['ambulatórios', 'césio', 'hospitais', 'nêutron', 'radiosótopos de urânio', 'chumbo', 'ferro', 'isótopos', 'potássio', 'cápsula', 'gama', 'nuclear', 'radiação'];
+    // Função para verificar se a palavra pode ser posicionada sem colisões
+    function canPlaceWord(word, startRow, startCol, direction) {
+        let row = startRow;
+        let col = startCol;
 
-    letters.map(function (item, index) {
-        var line = document.createElement('tr');
-        line.setAttribute('data-js', 'line' + index);
-        $tbody.appendChild(line);
-        letters[index].forEach(function (letter) {
-            line.insertAdjacentHTML('beforeend', '<td>' + letter + '</td>');
-        });
-    });
+        for (let i = 0; i < word.length; i++) {
+            if (row >= gridSize || col >= gridSize || (gridArray[row * gridSize + col] !== '' && gridArray[row * gridSize + col] !== word[i])) {
+                return false; // Palavra não cabe ou colisão com uma letra diferente
+            }
+            if (direction === 'horizontal') col++;
+            if (direction === 'vertical') row++;
+            if (direction === 'diagonal') { row++; col++; }
+        }
+        return true;
+    }
 
-    var selectedCells = [];
-    var foundWords = [];
-    var isMouseDown = false;
+    // Função para posicionar palavras na grade
+    function placeWord(word) {
+        const directions = ['horizontal', 'vertical', 'diagonal'];
+        let placed = false;
 
-    document.body.style.userSelect = 'none';
+        for (let attempts = 0; attempts < 100 && !placed; attempts++) {
+            const direction = directions[Math.floor(Math.random() * directions.length)];
+            let startRow = Math.floor(Math.random() * gridSize);
+            let startCol = Math.floor(Math.random() * gridSize);
 
-    function clearSelection() {
-        if (isCorrectSelection()) {
-            selectedCells.forEach(function (cell) {
-                cell.classList.add('selected'); // Mantém a seleção correta
-                foundWords.push(cell); // Armazena as células da palavra encontrada
-            });
-        } else {
-            selectedCells.forEach(function (cell) {
-                if (!foundWords.includes(cell)) { // Desmarca apenas se não fizer parte de uma palavra encontrada
-                    cell.classList.remove('color');
+            if (direction === 'horizontal' && startCol + word.length <= gridSize && canPlaceWord(word, startRow, startCol, 'horizontal')) {
+                for (let i = 0; i < word.length; i++) {
+                    gridArray[startRow * gridSize + startCol + i] = word[i];
                 }
-            });
+                placed = true;
+            } else if (direction === 'vertical' && startRow + word.length <= gridSize && canPlaceWord(word, startRow, startCol, 'vertical')) {
+                for (let i = 0; i < word.length; i++) {
+                    gridArray[(startRow + i) * gridSize + startCol] = word[i];
+                }
+                placed = true;
+            } else if (direction === 'diagonal' && startRow + word.length <= gridSize && startCol + word.length <= gridSize && canPlaceWord(word, startRow, startCol, 'diagonal')) {
+                for (let i = 0; i < word.length; i++) {
+                    gridArray[(startRow + i) * gridSize + startCol + i] = word[i];
+                }
+                placed = true;
+            }
         }
-        selectedCells = [];
-    }
 
-    function handleMouseDown(event) {
-        isMouseDown = true;
-        selectCell(event.target);
-    }
-
-    function handleMouseMove(event) {
-        if (isMouseDown) {
-            selectCell(event.target);
-        }
-    }
-
-    function handleMouseUp() {
-        isMouseDown = false;
-        clearSelection();
-    }
-
-    function selectCell(cell) {
-        if (cell.tagName === 'TD' && !cell.classList.contains('selected')) {
-            cell.classList.add('color');
-            selectedCells.push(cell);
+        if (placed) {
+            palavrasColocadas.push(word); // Somente adiciona a palavra na lista se ela foi colocada
+        } else {
+            console.error(`Não foi possível colocar a palavra: ${word}`);
         }
     }
 
-    function isCorrectSelection() {
-        // Verifica se as células selecionadas correspondem a uma das palavras
-        return indexes.some(function (wordIndexes) {
-            return wordIndexes.every(function (index, i) {
-                var row = $tbody.children[index[0]];
-                var cell = row.children[index[1]];
-                return selectedCells[i] === cell;
-            });
+    // Posiciona cada palavra da lista, sem repetir ou sobrescrever incorretamente
+    palavras.forEach(word => placeWord(word));
+
+    // Preenche o restante da grid com letras aleatórias
+    for (let i = 0; i < gridArray.length; i++) {
+        if (gridArray[i] === '') {
+            gridArray[i] = letters[Math.floor(Math.random() * letters.length)];
+        }
+    }
+
+    // Cria os blocos do grid no HTML
+    const gridDiv = document.createElement('div');
+    gridDiv.className = 'grid';
+    gridArray.forEach((letter) => {
+        const div = document.createElement('div');
+        div.textContent = letter;
+        div.addEventListener('click', selectLetter);
+        gridDiv.appendChild(div);
+    });
+    grid.appendChild(gridDiv);
+}
+
+let selectedLetters = [];
+
+function selectLetter(event) {
+    const letter = event.target;
+    const letterPosition = Array.prototype.indexOf.call(letter.parentNode.children, letter);
+
+    if (selectedLetters.includes(letterPosition)) {
+        // Se a letra já está selecionada, desmarcá-la
+        letter.classList.remove('selected');
+        letter.style.backgroundColor = ''; // Volta ao estado original
+        selectedLetters = selectedLetters.filter(index => index !== letterPosition); // Remove da lista de selecionadas
+    } else {
+        // Se a letra ainda não está selecionada, marcá-la
+        letter.classList.add('selected');
+        letter.style.backgroundColor = 'yellow'; // Marca como selecionada
+        letter.style.transition = 'background-color 0.3s ease'; // Adiciona transição suave
+        selectedLetters.push(letterPosition); // Adiciona à lista de selecionadas
+    }
+
+    checkWord(); // Verifica se a palavra foi formada
+}
+
+function checkWord() {
+    const selectedWord = selectedLetters.map(index => document.querySelectorAll('.grid div')[index].textContent).join('');
+
+    // Permite a verificação da palavra mesmo que as letras estejam fora de ordem
+    const sortedSelectedWord = selectedWord.split('').sort().join('');
+    const palavrasPossiveis = palavrasColocadas.map(palavra => palavra.split('').sort().join(''));
+
+    if (palavrasPossiveis.includes(sortedSelectedWord)) {
+        selectedLetters.forEach(index => {
+            const letterDiv = document.querySelectorAll('.grid div')[index];
+            letterDiv.classList.add('found');
+            letterDiv.style.backgroundColor = 'green'; 
+            letterDiv.style.transition = 'background-color 0.5s ease'; // Transição suave para verde
+        });
+        riscarPalavra(selectedWord); // Riscar a palavra encontrada
+        selectedLetters = [];
+        palavrasEncontradas++;
+
+        if (palavrasEncontradas === palavrasColocadas.length) {
+            setTimeout(() => {
+                alert("Parabéns! Você encontrou todas as palavras!");
+            }, 300);
+        }
+    } else {
+        // Se a palavra ainda não estiver completa, mantém as letras amarelas
+        selectedLetters.forEach(index => {
+            const letterDiv = document.querySelectorAll('.grid div')[index];
+            letterDiv.style.backgroundColor = 'yellow';
         });
     }
+}
 
-    $tbody.addEventListener('mousedown', handleMouseDown);
-    $tbody.addEventListener('mousemove', handleMouseMove);
-    document.addEventListener('mouseup', handleMouseUp);
+// Função para riscar a palavra na lista de palavras encontradas
+function riscarPalavra(palavra) {
+    const palavraLi = document.querySelector(`#word-list li[data-palavra="${palavra}"]`);
+    if (palavraLi) {
+        palavraLi.style.textDecoration = 'line-through'; // Adiciona o risco
+    }
+}
 
-    $tbody.addEventListener('touchstart', function (event) {
-        selectCell(event.targetTouches[0].target);
+function createWordList() {
+    const wordList = document.getElementById('word-list');
+    const ul = document.createElement('ul');
+    palavrasColocadas.forEach(palavra => {
+        const li = document.createElement('li');
+        li.textContent = palavra.charAt(0) + palavra.slice(1).toLowerCase(); // Formata a palavra
+        li.setAttribute('data-palavra', palavra); // Adiciona um atributo para referência
+        ul.appendChild(li);
     });
+    wordList.appendChild(ul);
+}
 
-    $tbody.addEventListener('touchmove', function (event) {
-        selectCell(event.targetTouches[0].target);
-    });
-
-    $tbody.addEventListener('touchend', function () {
-        clearSelection();
-    });
-
-})();
+createGrid();
+createWordList();

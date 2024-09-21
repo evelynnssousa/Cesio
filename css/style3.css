@@ -7,24 +7,34 @@
     font-size: 100%;
 }
 header{
-    width: min
-    -content;
-    background-color: black;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(to bottom, #002f4b , rgba(43, 47, 119, 0));
     text-align: center;
     padding: 20px;
     z-index: 1000;
+    align-items: center;
+}
+header img{
+    float: left;
+    margin: 5px;
 }
 header nav a {
     font-size: 20px;
     font-weight: 700;
-    font-family: 'Poppins', sans-serif;
-    color:rgb(150, 150, 150);
+    color: white;
     padding: 14px 20px;
     text-decoration: none;
+    display: inline-block;
 }
-header nav a:hover{
-    color: whitesmoke;  
+header nav a:hover {
+    color: #2e373f;
 }
 body{
     background-color: #f4f4f4;
+}
+main {
+    padding-top: 100px;
 }

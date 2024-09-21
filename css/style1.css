@@ -7,23 +7,30 @@
     font-size: 100%;
 }
 header{
-    width: min
-    -content;
-    background-color: black;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(to bottom, #002f4b , rgba(43, 47, 119, 0));
     text-align: center;
     padding: 20px;
     z-index: 1000;
+    align-items: center;
 }
-header nav a{
+header img{
+    float: left;
+    margin: 5px;
+}
+header nav a {
     font-size: 20px;
     font-weight: 700;
-    font-family: 'Poppins', sans-serif;
-    color:rgb(150, 150, 150);
+    color: white;
     padding: 14px 20px;
     text-decoration: none;
+    display: inline-block;
 }
-header nav a:hover{
-    color: whitesmoke;  
+header nav a:hover {
+    color: #2e373f;
 }
 iframe{
     margin-top: 20px;
@@ -38,47 +45,126 @@ h1{
 body{
     background-color: #f4f4f4;
 }
-.apresentacao{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
- }
- .apresentacao h1{
-     padding: 0 20px;
-  }
-  .apresentacao h1{
+.amora h2{
     text-align: center;
     font-size: 40px;
     margin: 20px;
     font-weight: 700px;
-  }
-  .apresentacao1 p{
+}
+.amora iframe{
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+  .amora iframe:hover{
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
+}
+.amora1 {
     text-indent: 2em;
+    display: flex;
     align-items: center;
+    gap: 20px;
+    flex-direction: row-reverse;
     font-size: 18px;
     line-height: 1.6;
     margin-left: 20px;
     margin-right: 20px;
     margin-top: 30px;
 }
-.amora h2{
+.bergamota h2{
     text-align: center;
     font-size: 40px;
     margin: 20px;
     font-weight: 700px;
-  }
-  .amora iframe{
+}
+.bergamota img{
     width: 500px;
-    height: 460px;
+    height: 315px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-  }
-  .amora iframe:hover{
+}
+.bergamota img:hover{
     transform: scale(1.05);
     transition: transform 0.3s ease;
 }
-.amora1 {
+.bergamota1 {
+    text-indent: 2em;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    font-size: 18px;
+    line-height: 1.6;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+.cereja h2{
+    text-align: center;
+    font-size: 40px;
+    margin: 20px;
+    font-weight: 700px;
+}
+.cereja img{
+    width: 500px;
+    height: 315px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+.cereja img:hover{
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
+}
+.cereja1 {
+    text-indent: 2em;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    font-size: 18px;
+    line-height: 1.6;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+.damasco h2{
+    text-align: center;
+    font-size: 40px;
+    margin: 20px;
+    font-weight: 700px;
+}
+.damasco img{
+    width: 500px;
+    height: 315px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+.damasco img:hover{
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
+}
+.damasco1 {
+    text-indent: 2em;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-direction: row-reverse;
+    font-size: 18px;
+    line-height: 1.6;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+.esfregadinha h2{
+    text-align: center;
+    font-size: 40px;
+    margin: 20px;
+    font-weight: 700px;
+}
+.esfregadinha iframe{
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+.esfregadinha iframe:hover{
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
+}
+.esfregadinha1 {
     text-indent: 2em;
     display: flex;
     align-items: center;
@@ -89,6 +175,6 @@ body{
     margin-right: 20px;
     margin-top: 30px;
 }
-
-
-
+main {
+    padding-top: 100px;
+}

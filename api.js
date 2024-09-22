@@ -44,22 +44,17 @@ app.post('/gerarPergunta', async (req, res) => {
 
         console.log('Resposta da API:', response); // Logando a resposta da API
 
-        if (response && response.text) {
-            const perguntaTexto = response.text;
-
-            // Supondo que a resposta da API esteja em JSON
-            const resultadoJSON = JSON.parse(perguntaTexto);
-
-            return res.json({
-                pergunta: resultadoJSON.question,
-                alternativas: resultadoJSON.answers.map(alt => alt.Text),
-                explicacao: resultadoJSON.explicacao
-            });
-        } else {
-            throw new Error('Resposta inválida da API');
-        }
-    } catch (error) {
-        console.error('Erro no servidor:', error.message);
+        try {
+            const resultadoJSON = JSON.parse(response.text);
+            console.log('JSON parseado:', resultadoJSON); 
+        
+            // ... restante do código
+          } catch (parseError) {
+            console.error('Erro ao parsear JSON:', parseError);
+            return res.status(500).json({ error: 'Erro ao parsear resposta da API' });
+          }
+        } catch (error) {
+          console.error('Erro na requisição à API:', error);
         return res.status(500).json({ error: 'Erro no servidor', details: error.message });
     }
 });

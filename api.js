@@ -35,7 +35,7 @@ app.post('/gerarPergunta', async (req, res) => {
     try {
         console.log(`Recebido: dificuldade = ${dificuldade}, tema = ${tema}`);
 
-        // Fazendo a requisição para gerar conteúdo usando generateText
+        // Fazendo a requisição para gerar conteúdo
         const response = await model.generateContent(promptText);
 
         console.log('Resposta da API:', response); // Logando a resposta da API

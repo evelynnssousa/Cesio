@@ -40,7 +40,7 @@ document.getElementById('gerarPergunta').addEventListener('click', async functio
     document.getElementById('verResposta').style.display = 'none';
 
     try {
-        const response = await fetch('http://localhost:3000/gerarPergunta', {
+        const response = await fetch('http://localhost:3000/gerarPergunta', {  // <-- Altere a URL aqui
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

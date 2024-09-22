@@ -1,7 +1,7 @@
 import express from 'express';
-import fetch from 'node-fetch';
 import cors from 'cors';
 import dotenv from 'dotenv';
+import { GoogleGenerativeAI } from "@google/generative-ai";
 
 dotenv.config();
 
@@ -11,53 +11,50 @@ const port = process.env.PORT || 3000;
 app.use(cors());
 app.use(express.json());
 
-const apiKey = process.env.GOOGLE_API_KEY || 'AIzaSyD81j@GY-Q3gSEPngXHGSBqWBihn3Wtb_Y';
+// Inicializando a instância do GoogleGenerativeAI com a chave de API
+const apiKey = process.env.GOOGLE_API_KEY;
+const genAI = new GoogleGenerativeAI({ apiKey });
+const model = genAI.getGenerativeModel({model: "gemini-1.5-flash"})
 
 app.post('/gerarPergunta', async (req, res) => {
     const { dificuldade, tema } = req.body;
 
-    const endpoint = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent';
+    // Montando o prompt
+    const promptText = `Gere uma pergunta sobre o tema ${tema} com dificuldade ${dificuldade}, 4 alternativas de resposta, e uma explicação da correta. Retorne no formato JSON com a seguinte estrutura:
+    {
+      "question": "Pergunta",
+      "answers": [
+        { "Text": "alternativa 1", "correct": "boolean" },
+        { "Text": "alternativa 2", "correct": "boolean" },
+        { "Text": "alternativa 3", "correct": "boolean" },
+        { "Text": "alternativa 4", "correct": "boolean" }
+      ],
+      "explicacao": "Explicação da resposta correta"
+    }`;
 
     try {
         console.log(`Recebido: dificuldade = ${dificuldade}, tema = ${tema}`);
 
-        const response = await fetch(endpoint, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${apiKey}`
-            },
-            body: JSON.stringify({
-                prompt: {
-                    text: `Gere uma pergunta sobre o tema ${tema} com dificuldade ${dificuldade}, 4 alternativas de resposta, e uma explicação da correta.`
-                }
-            })
+        const response = await model.generateContent({
+            prompt: promptText,
+            maxTokens: 100, 
         });
 
-        if (response.ok) {
-            const data = await response.json();
-            console.log("Resposta da API recebida:", data);
+        console.log('Resposta da API:', response); // Logando a resposta da API
 
-            if (data.candidates && data.candidates[0]) {
-                const perguntaTexto = data.candidates[0].text;
+        if (response && response.text) {
+            const perguntaTexto = response.text;
 
-                // Processando a pergunta
-                const pergunta = perguntaTexto.split('Alternativas:')[0].trim();
-                const alternativasTexto = perguntaTexto.split('Alternativas:')[1].split('Explicação:')[0].trim();
-                const alternativas = alternativasTexto.split('\n');
-                const explicacao = perguntaTexto.split('Explicação:')[1].trim();
+            // Supondo que a resposta da API esteja em JSON
+            const resultadoJSON = JSON.parse(perguntaTexto);
 
-                return res.json({
-                    pergunta,
-                    alternativas,
-                    explicacao
-                });
-            } else {
-                throw new Error('Resposta inválida da API: candidatos não encontrados');
-            }
+            return res.json({
+                pergunta: resultadoJSON.question,
+                alternativas: resultadoJSON.answers.map(alt => alt.Text),
+                explicacao: resultadoJSON.explicacao
+            });
         } else {
-            console.error('Erro na API do Google:', response.statusText);
-            return res.status(500).json({ error: 'Erro na API do Google', details: response.statusText });
+            throw new Error('Resposta inválida da API');
         }
     } catch (error) {
         console.error('Erro no servidor:', error.message);
@@ -72,4 +69,3 @@ app.listen(port, () => {
 app.get('/', (req, res) => {
     res.send('Servidor está funcionando');
 });
-

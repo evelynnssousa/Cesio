@@ -1,180 +1,85 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=SUSE:wght@100..800&display=swap');
-*{
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&family=SUSE:wght@100..800&display=swap');
+
+* {
     margin: 0;
     padding: 0;
-    border: 0;
+    box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
-    font-size: 100%;
 }
-header{
+
+body {
+    background: linear-gradient(to right, #f5f7fa, #c3cfe2);
+    color: #333;
+    line-height: 1.6;
+    padding-top: 60px;
+}
+
+header {
     position: fixed;
     top: 0;
-    left: 0;
     width: 100%;
-    background: linear-gradient(to bottom, #002f4b , rgba(43, 47, 119, 0));
+    background: rgba(0, 47, 75, 0.9);
+    padding: 10px 0;
     text-align: center;
-    padding: 20px;
     z-index: 1000;
-    align-items: center;
 }
-header img{
-    float: left;
-    margin: 5px;
-}
+
 header nav a {
-    font-size: 20px;
-    font-weight: 700;
     color: white;
-    padding: 14px 20px;
+    font-size: 20px;
+    margin: 0 15px;
     text-decoration: none;
-    display: inline-block;
+    font-weight: 500;
+    transition: color 0.3s ease;
 }
+
 header nav a:hover {
-    color: #2e373f;
+    color: #f8a300;
 }
-iframe{
-    margin-top: 20px;
-}
-h1{
-    font-family: "Roboto", sans-serif;
-    font-weight: 700px;
-    font-style: italic;
-    margin-top: 20px;
-    text-align: center;
-}
-body{
-    background-color: #f4f4f4;
-}
-.amora h2{
-    text-align: center;
-    font-size: 40px;
-    margin: 20px;
-    font-weight: 700px;
-}
-.amora iframe{
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-}
-  .amora iframe:hover{
-    transform: scale(1.05);
-    transition: transform 0.3s ease;
-}
-.amora1 {
-    text-indent: 2em;
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    flex-direction: row-reverse;
-    font-size: 18px;
-    line-height: 1.6;
-    margin-left: 20px;
-    margin-right: 20px;
-    margin-top: 30px;
-}
-.bergamota h2{
-    text-align: center;
-    font-size: 40px;
-    margin: 20px;
-    font-weight: 700px;
-}
-.bergamota img{
-    width: 500px;
-    height: 315px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-}
-.bergamota img:hover{
-    transform: scale(1.05);
-    transition: transform 0.3s ease;
-}
-.bergamota1 {
-    text-indent: 2em;
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    font-size: 18px;
-    line-height: 1.6;
-    margin-left: 20px;
-    margin-right: 20px;
-}
-.cereja h2{
-    text-align: center;
-    font-size: 40px;
-    margin: 20px;
-    font-weight: 700px;
-}
-.cereja img{
-    width: 500px;
-    height: 315px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-}
-.cereja img:hover{
-    transform: scale(1.05);
-    transition: transform 0.3s ease;
-}
-.cereja1 {
-    text-indent: 2em;
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    font-size: 18px;
-    line-height: 1.6;
-    margin-left: 20px;
-    margin-right: 20px;
-}
-.damasco h2{
-    text-align: center;
-    font-size: 40px;
-    margin: 20px;
-    font-weight: 700px;
-}
-.damasco img{
-    width: 500px;
-    height: 315px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-}
-.damasco img:hover{
-    transform: scale(1.05);
-    transition: transform 0.3s ease;
-}
-.damasco1 {
-    text-indent: 2em;
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    flex-direction: row-reverse;
-    font-size: 18px;
-    line-height: 1.6;
-    margin-left: 20px;
-    margin-right: 20px;
-}
-.esfregadinha h2{
-    text-align: center;
-    font-size: 40px;
-    margin: 20px;
-    font-weight: 700px;
-}
-.esfregadinha iframe{
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-}
-.esfregadinha iframe:hover{
-    transform: scale(1.05);
-    transition: transform 0.3s ease;
-}
-.esfregadinha1 {
-    text-indent: 2em;
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    font-size: 18px;
-    line-height: 1.6;
-    margin-left: 20px;
-    margin-right: 20px;
-    margin-top: 30px;
-}
+
 main {
-    padding-top: 100px;
+    padding: 20px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.section {
+    background-color: white;
+    border-radius: 8px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+h2 {
+    text-align: center;
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: #002f4b;
+}
+
+p {
+    font-size: 18px;
+    line-height: 1.8;
+    margin-top: 15px;
+}
+
+iframe, img {
+    width: 100%;
+    border-radius: 10px;
+    margin-top: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease;
+}
+
+iframe:hover, img:hover {
+    transform: scale(1.05);
+}
+
+@media (min-width: 768px) {
+    iframe, img {
+        width: 560px;
+        height: 315px;
+    }
 }

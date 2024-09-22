@@ -4,15 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Exercícios Inteligentes</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/exercicios.css">
 </head>
 <body>
-    <!-- <header>
+
+    <header>
         <nav>
             <a href="index.html">Página inicial</a>
+            <a href="casos3.html">Casos</a>
+            <a href="indicacoes1.html">Indicações</a>
+            <a href="cacapalavra2.html">Caça palavras</a>
+            <a href="curiosidades4.html">Curiosidades</a>
         </nav>
-    </header> -->
-
+    </header>
+    
     <main>
         <h1>Gerador de Exercícios Inteligentes</h1>
 
@@ -31,19 +36,13 @@
                 <option value="fisica_geral">Física Geral</option>
             </select>
 
+            <label for="quantidadePerguntas">Quantidade de perguntas (máximo 10):</label>
+            <input type="number" id="quantidadePerguntas" min="1" max="10" value="1">
+
             <button id="gerarPergunta">Gerar Pergunta</button>
         </section>
 
-        <div class="questao-gerada">
-            <h2 id="pergunta"></h2>
-            <ul id="alternativas"></ul>
-            <button id="verResposta" style="display:none;">Ver resposta</button>
-        </div>
-
-        <div class="resposta" id="resposta" style="display:none;">
-            <h2>Explicação</h2>
-            <p id="explicacao"></p>
-        </div>
+        <div id="perguntasContainer"></div>
     </main>
 
     <!-- Inclua os arquivos JS -->

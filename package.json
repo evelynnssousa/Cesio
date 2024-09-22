@@ -1,18 +1,17 @@
 {
-  "name": "cesio-project",
-  "version": "1.0.0",
-  "description": "Projeto Césio",
-  "main": "api.js",
-  "type": "module",
-  "scripts": {
-    "start": "node api.js"
-  },
   "dependencies": {
-    "@google/generative-ai": "^0.19.0",
-    "axios": "^1.7.7",
-    "cors": "^2.8.5",
-    "dotenv": "^16.4.5",
-    "express": "^4.21.0",
-    "node-fetch": "^2.7.0"
-  }
+    "type": "module",
+    "@google/generative-ai": "^0.19.0"
+  },
+  "name": "cesio",
+  "version": "1.0.0",
+  "main": "api.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
 }

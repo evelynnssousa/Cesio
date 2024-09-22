@@ -1,0 +1,232 @@
+/* Estilo geral */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif; /* Fonte mais moderna */
+}
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(to bottom, #002f4b, rgba(43, 47, 119, 0));
+    padding: 15px;
+    z-index: 1000;
+    text-align: center;
+}
+
+header nav a {
+    font-size: 18px;
+    font-weight: 600;
+    color: white;
+    padding: 10px 15px;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+header nav a:hover {
+    color: #2e373f;
+}
+
+
+body {
+    background-color: #eef2f5; /* Fundo suave */
+    padding: 20px;
+    padding-top: 90px;
+}
+
+main {
+    max-width: 800px;
+    margin: auto;
+    padding: 30px;
+    /* background: #fff; */
+    border-radius: 15px;
+    /* box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.1); Sombra mais definida */
+    position: relative;
+    z-index: 1;
+}
+
+/* Título */
+h1 {
+    text-align: center;
+    color: #333;
+    font-size: 2rem; /* Tamanho maior para dar destaque */
+    margin-bottom: 25px;
+}
+
+/* Caixa de seleção e inputs */
+section {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background-color: #f7f9fc; /* Fundo mais claro */
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.08); /* Sombra mais sutil */
+    margin-bottom: 30px;
+}
+
+/* Labels e inputs */
+label {
+    font-size: 1rem;
+    margin-bottom: 5px;
+    color: #555;
+}
+
+select, input[type="number"], button {
+    padding: 14px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    width: 100%;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+select:focus, input[type="number"]:focus {
+    border-color: #4CAF50;
+    outline: none;
+    box-shadow: 0px 3px 7px rgba(0, 0, 0, 0.15); /* Sombra ao focar */
+}
+
+/* Estilo do botão */
+button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 14px;
+    font-size: 16px;
+    border-radius: 10px;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+button:hover {
+    background-color: #45a049;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilo das alternativas */
+ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+li {
+    padding: 12px;
+    margin-bottom: 8px;
+    background-color: #f1f3f6;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, border 0.3s ease, box-shadow 0.3s ease;
+}
+
+li:hover {
+    background-color: #e1e5ea;
+}
+
+/* Alternativa selecionada */
+.selecionada {
+    background-color: #cce7ff;
+    border: 2px solid #007bff; /* Borda azul mais viva */
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1); /* Pequena sombra */
+}
+
+/* Alternativa correta */
+.correct {
+    background-color: #d4edda;
+    color: #155724;
+    border: 2px solid #28a745; /* Borda verde */
+}
+
+/* Alternativa incorreta */
+.incorrect {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 2px solid #dc3545; /* Borda vermelha */
+}
+
+/* Estilo flutuante das perguntas */
+.container-questoes {
+    max-height: 500px;
+    overflow-y: auto;
+    padding: 30px;
+    position: relative;
+}
+
+/* Estilo de cada questão */
+.bloco-questao {
+    background-color: #fff;
+    padding: 25px;
+    margin-bottom: 25px;
+    border: 1px solid #ddd;
+    border-radius: 15px;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1); /* Sombra mais pronunciada */
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    transform: translateY(15px);
+    opacity: 0;
+}
+
+.bloco-questao.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Estilo de visualização da resposta */
+.resposta {
+    margin-top: 15px;
+    color: #555;
+    font-style: italic;
+}
+
+button.ver-resposta {
+    margin-top: 15px;
+    background-color: #008CBA;
+    color: white;
+    cursor: pointer;
+    padding: 12px;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+}
+
+button.ver-resposta:hover {
+    background-color: #007bb5;
+}
+
+/* Animações */
+@keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slide-down {
+    from { transform: translateY(-20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+/* Responsividade */
+@media (max-width: 600px) {
+    main {
+        padding: 15px;
+    }
+
+    section {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    select, input[type="number"], button {
+        width: 100%;
+        padding: 10px;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+
+    .container-questoes {
+        padding: 20px;
+    }
+}

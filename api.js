@@ -2,6 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import { GoogleGenerativeAI } from "@google/generative-ai";
+import axios from 'axios'; // Importando axios
 
 dotenv.config();
 
@@ -13,8 +14,8 @@ app.use(express.json());
 
 // Inicializando a instância do GoogleGenerativeAI com a chave de API
 const apiKey = "AIzaSyBc1V0aD1WeeRfFtcC8stNPFvxMYL7P4O8";
-const genAI = new GoogleGenerativeAI(apiKey);
-const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash"})
+const genAI = new GoogleGenerativeAI({ apiKey });
+const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
 app.post('/gerarPergunta', async (req, res) => {
     const { dificuldade, tema } = req.body;
@@ -35,12 +36,20 @@ app.post('/gerarPergunta', async (req, res) => {
     try {
         console.log(`Recebido: dificuldade = ${dificuldade}, tema = ${tema}`);
 
-        // Fazendo a requisição para gerar conteúdo
-        const response = await model.generateContent(promptText);
+        // Fazendo a requisição para gerar conteúdo usando axios
+        const response = await axios.post('https://generativelanguage.googleapis.com/v1/models/gemini-pro:generateContent', {
+            prompt: promptText,
+            maxTokens: 200, // Ajuste o valor conforme necessário
+        }, {
+            headers: {
+                Authorization: `Bearer ${apiKey}`,
+                'Content-Type': 'application/json'
+            }
+        });
 
-        console.log('Resposta da API:', response); // Logando a resposta da API
-        if (response && response.candidates && response.candidates.length > 0) {
-            const resultadoJSON = JSON.parse(response.candidates[0].output);
+        console.log('Resposta da API:', response.data); // Logando a resposta da API
+        if (response.data && response.data.candidates && response.data.candidates.length > 0) {
+            const resultadoJSON = JSON.parse(response.data.candidates[0].output);
             return res.json({
                 pergunta: resultadoJSON.question,
                 alternativas: resultadoJSON.answers.map(alt => alt.Text),
@@ -48,7 +57,7 @@ app.post('/gerarPergunta', async (req, res) => {
             });
         } else {
             throw new Error('Resposta inválida da API');
-        }  
+        }
     } catch (error) {
         console.error('Erro na requisição à API:', error);
         return res.status(500).json({ error: 'Erro no servidor', details: error.message });

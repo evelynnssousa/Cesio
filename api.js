@@ -12,9 +12,9 @@ app.use(cors());
 app.use(express.json());
 
 // Inicializando a instância do GoogleGenerativeAI com a chave de API
-const apiKey = process.env.GOOGLE_API_KEY;
-const genAI = new GoogleGenerativeAI({ apiKey });
-const model = genAI.getGenerativeModel({model: "gemini-1.5-flash"})
+const apiKey = "AIzaSyBc1V0aD1WeeRfFtcC8stNPFvxMYL7P4O8";
+// const genAI = new GoogleGenerativeAI({ apiKey });
+// const model = genAI.getGenerativeModel({model: "gemini-1.5-flash"})
 
 app.post('/gerarPergunta', async (req, res) => {
     const { dificuldade, tema } = req.body;
@@ -33,6 +33,8 @@ app.post('/gerarPergunta', async (req, res) => {
     }`;
 
     try {
+        const genAI = new GoogleGenerativeAI({ apiKey });
+        const model = genAI.getGenerativeModel({model: "gemini-1.5-flash"})
         console.log(`Recebido: dificuldade = ${dificuldade}, tema = ${tema}`);
 
         const response = await model.generateContent({

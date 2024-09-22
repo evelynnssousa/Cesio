@@ -12,22 +12,43 @@ header {
     left: 0;
     width: 100%;
     background: linear-gradient(to bottom, #002f4b, rgba(43, 47, 119, 0));
-    padding: 15px;
+    padding: 20px;
+    padding-right: 50px;
     z-index: 1000;
-    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header .logo a {
+    font-size: 24px;
+    font-weight: 700;
+    color: white;
+    text-decoration: none;
+}
+
+header nav {
+    display: flex;
+    gap: 20px;
 }
 
 header nav a {
-    font-size: 18px;
-    font-weight: 600;
+    font-size: 20px;
+    font-weight: 700;
     color: white;
-    padding: 10px 15px;
     text-decoration: none;
     transition: color 0.3s ease;
 }
 
 header nav a:hover {
     color: #2e373f;
+}
+
+.hamburger {
+    display: none;
+    font-size: 30px;
+    cursor: pointer;
+    color: white;
 }
 
 
@@ -206,6 +227,34 @@ button.ver-resposta:hover {
     to { transform: translateY(0); opacity: 1; }
 }
 
+@media screen and (max-width: 768px) {
+
+    header {
+        padding: 10px;
+    }
+
+    header nav {
+        display: none; /* Esconde o menu de navegação por padrão em telas pequenas */
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        background-color: rgba(0, 47, 75, 0.9);
+        width: 100%;
+        text-align: right;
+    }
+
+    header nav a {
+        padding: 10px 20px;
+        font-size: 18px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .hamburger {
+        display: block; /* Exibe o menu de hambúrguer */
+    }
+}
+
 /* Responsividade */
 @media (max-width: 600px) {
     main {
@@ -229,4 +278,8 @@ button.ver-resposta:hover {
     .container-questoes {
         padding: 20px;
     }
+}
+
+nav.active {
+    display: flex; /* Mostra o menu quando clicado */
 }

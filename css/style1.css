@@ -17,24 +17,25 @@ body {
 header {
     position: fixed;
     top: 0;
+    left: 0;
     width: 100%;
     background: rgba(0, 47, 75, 0.9);
-    padding: 10px 0;
-    text-align: center;
+    padding: 15px;
     z-index: 1000;
+    text-align: center;
 }
 
 header nav a {
+    font-size: 18px;
+    font-weight: 600;
     color: white;
-    font-size: 20px;
-    margin: 0 15px;
+    padding: 10px 15px;
     text-decoration: none;
-    font-weight: 500;
     transition: color 0.3s ease;
 }
 
 header nav a:hover {
-    color: #f8a300;
+    color: #2e373f;
 }
 
 main {
@@ -51,6 +52,13 @@ main {
     padding: 20px;
 }
 
+.lado {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+} 
+
 h2 {
     text-align: center;
     font-size: 32px;
@@ -63,10 +71,13 @@ p {
     font-size: 18px;
     line-height: 1.8;
     margin-top: 15px;
+    width: 90%; /* Alterado para ser mais responsivo */
+    text-align: center;
 }
 
 iframe, img {
-    width: 100%;
+    width: 100%; /* Alterado para ocupar 100% do container */
+    max-width: 560px; /* Limitar a largura máxima */
     border-radius: 10px;
     margin-top: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
@@ -78,8 +89,12 @@ iframe:hover, img:hover {
 }
 
 @media (min-width: 768px) {
-    iframe, img {
-        width: 560px;
-        height: 315px;
+    .lado {
+        flex-direction: row; /* Muda para linha em telas maiores */
+        justify-content: space-between; /* Espaço entre os elementos */
+    }
+
+    p {
+        width: 60%; /* Altera a largura do texto em telas maiores */
     }
 }

@@ -1,3 +1,8 @@
+function toggleMenu() {
+    const nav = document.querySelector('nav');
+    nav.classList.toggle('active');
+}
+
 // Função para mostrar uma mensagem de carregamento
 function mostrarCarregando() {
     const container = document.getElementById('perguntasContainer');

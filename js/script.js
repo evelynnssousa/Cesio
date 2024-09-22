@@ -8,6 +8,11 @@ let palavrasEncontradas = 0; // Contador de palavras encontradas
 let palavrasColocadas = []; // Lista de palavras que foram corretamente colocadas na grid
 const gridSize = 12;  // Tamanho do tabuleiro
 
+function toggleMenu() {
+    const nav = document.querySelector('nav');
+    nav.classList.toggle('active');
+}
+
 function createGrid() {
     const grid = document.getElementById('word-search');
     grid.innerHTML = ''; // Limpa o conteúdo
